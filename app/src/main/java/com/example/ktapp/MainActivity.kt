@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,17 +29,34 @@ class MainActivity : ComponentActivity() {
                     .background(Color.LightGray)
             ) {
                Image(painter = painterResource(id = R.drawable.happy_meal_small), contentDescription = null,
-                   modifier = Modifier.height(300.dp).fillMaxWidth(), contentScale = ContentScale.Crop)
+                   modifier = Modifier
+                       .height(300.dp)
+                       .fillMaxWidth(), contentScale = ContentScale.Crop)
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = "Happy Meals",
-                        style = TextStyle(fontSize = 26.sp)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(text = "Happy Meals",
+                            style = TextStyle(fontSize = 26.sp)
                         )
+                        Text(text = "$5.99", color = Color.Red,
+                            style = TextStyle(fontSize = 17.sp),
+                            modifier = Modifier.align(Alignment.CenterVertically)
+                            )
+                    }
                     Spacer(modifier = Modifier.padding(top = 10.dp))
-                    Text(text = "800 Calories",
-                        style = TextStyle(fontSize = 17.sp))
-                    Spacer(modifier = Modifier.padding(top = 10.dp))
-                    Text(text = "$5.99", color = Color.Green,
-                        style = TextStyle(fontSize = 17.sp))
+                    Text(
+                        text = "800 Calories",
+                        style = TextStyle(fontSize = 17.sp)
+                    )
+                    Spacer(modifier = Modifier.padding(10.dp))
+                    Button(
+                        onClick = { /*TODO*/ }, 
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ) {
+                        Text(text = "ORDER NOW")  
+                    }
                 }
             }
         }
